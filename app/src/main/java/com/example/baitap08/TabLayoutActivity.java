@@ -1,5 +1,5 @@
 package com.example.baitap08;
-
+import com.example.baitap08.R;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -12,11 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.example.baitap08.databinding.ActivityMainBinding;
 import com.example.baitap08.databinding.ActivityTablayoutBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+
 
 public class TabLayoutActivity extends AppCompatActivity {
     // Khai báo binding
@@ -29,7 +29,7 @@ public class TabLayoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // viewBinding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityTablayoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         // toobar
@@ -82,7 +82,7 @@ public class TabLayoutActivity extends AppCompatActivity {
         binding.fabAction.hide(); // Thay đổi Icon cho FloatingActionButton
         new Handler().postDelayed(new Runnable() {
             @Override
-            public void run() {A
+            public void run() {
                 switch (index) {
                     case 0:
                         binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_baseline_chat_24));
@@ -103,26 +103,5 @@ public class TabLayoutActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case R.id.menuSearch:
-                Toast.makeText(this, "Bạn đang chọn search", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menuNewGroup:
-            case R.id.menuBroadcast:
-            case R.id.menuWeb:
-            case R.id.menuMessage:
-                Toast.makeText(this, "Bạn đang chọn more", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.menuSetting:
-                Toast.makeText(this, "Bạn đang chọn Setting", Toast.LENGTH_SHORT).show();
-                ;
-                break;
-        }
-        return super.onOptionsItemSelected(item);
     }
 }
